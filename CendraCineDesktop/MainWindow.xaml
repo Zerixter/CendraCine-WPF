@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CendraCineDesktop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="CendraCine" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="Login" HorizontalAlignment="Left" Margin="707,389,0,0" VerticalAlignment="Top" Width="75" Click="LoginClicked"/>
+        <ListBox x:Name="MoviesListBox" HorizontalAlignment="Left" Height="333" Margin="10,51,0,0" VerticalAlignment="Top" Width="772"/>
+        <Label Content="Películes" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="36" Width="119"/>
+        <Button Content="Cargar Películes" HorizontalAlignment="Left" Margin="606,389,0,0" VerticalAlignment="Top" Width="96" Click="LoadClicked"/>
     </Grid>
 </Window>
