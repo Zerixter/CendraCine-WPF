@@ -65,5 +65,12 @@ namespace CendraCineDesktop.Services
             }
             return Movies;
         }
+
+        public async Task<bool> DeleteMovie(string id)
+        {
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, $"movie/{id}");
+            var x = await Client.SendAsync(request);
+            return x.StatusCode == HttpStatusCode.OK;
+        }
     }
 }

@@ -8,8 +8,16 @@
         Title="CendraCine" Height="450" Width="800">
     <Grid>
         <Button Content="Login" HorizontalAlignment="Left" Margin="707,389,0,0" VerticalAlignment="Top" Width="75" Click="LoginClicked"/>
-        <ListBox x:Name="MoviesListBox" HorizontalAlignment="Left" Height="333" Margin="10,51,0,0" VerticalAlignment="Top" Width="772"/>
-        <Label Content="Películes" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="36" Width="119"/>
+        <DataGrid x:Name="DataGridMovies" HorizontalAlignment="Left" Height="333" Margin="10,51,0,0" VerticalAlignment="Top" Width="772">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Trailer" Binding="{Binding Trailer}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Puntuació" Binding="{Binding Rating}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Edat recomenada" Binding="{Binding RecommendedAge}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Películes" HorizontalAlignment="Left" Margin="27,5,0,0" VerticalAlignment="Top" Height="36" Width="119"/>
         <Button Content="Cargar Películes" HorizontalAlignment="Left" Margin="606,389,0,0" VerticalAlignment="Top" Width="96" Click="LoadClicked"/>
+        <Button Content="Esborrar Película" HorizontalAlignment="Left" Margin="502,389,0,0" VerticalAlignment="Top" Width="99" Click="DeleteClicked"/>
     </Grid>
 </Window>

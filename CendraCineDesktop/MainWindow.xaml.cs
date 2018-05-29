@@ -2,6 +2,7 @@
 using CendraCineDesktop.Services;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace CendraCineDesktop
     public partial class MainWindow : Window
     {
         private readonly ApiService api;
-        private List<Movie> Movies;
+        public List<Movie> Movies;
 
         public MainWindow()
         {
@@ -50,7 +51,28 @@ namespace CendraCineDesktop
 
             foreach (Movie movie in Movies)
             {
-                MoviesListBox.Items.Add(movie);
+                DataGridMovies.Items.Add(movie);
+            }
+        }
+
+        private async void DeleteClicked(object sender, RoutedEventArgs e)
+        {
+            var SelectedMovie = DataGridMovies.SelectedItem as Movie;
+
+            bool delete = await api.DeleteMovie(SelectedMovie.Id);
+
+            if (delete)
+            {
+                try
+                {
+                    DataGridMovies.Items.RemoveAt(DataGridMovies.SelectedIndex);
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            } else
+            {
+                MessageBox.Show("S'ha produit un error al intentar esborrar la película");
             }
         }
     }
